@@ -72,7 +72,7 @@ The console examples have standard `main()` entry points and build as separate e
 
 ## Examples and sample inputs
 
-Additional usage examples are retained in the relevant source files as `run_example()` functions. Numeric sample datasets and word filters are included. A small demonstration word list replaces the original large dictionary of uncertain redistribution terms. The string conversion demonstration builds as `string_conversion_example`. Supply your own compatible image files for the image examples; bundled third-party images and external binary dependencies are not included.
+Additional usage examples are retained in the relevant source files as `run_example()` functions. Numeric sample datasets and word filters are included. A small demonstration word list replaces the original large dictionary of uncertain redistribution terms. The string conversion demonstration builds as `string_conversion_example`. Supply your own compatible image files for the image examples; bundled third-party images and binary grading libraries are not included.
 
 ## Implementation notes
 
