@@ -1,0 +1,13 @@
+build/
+cmake-build-*/
+*.o
+*.obj
+*.a
+*.lib
+*.exe
+*.out
+*.pdb
+.env
+.env.*
+.vs/
+.DS_Store
