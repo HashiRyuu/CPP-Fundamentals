@@ -1,81 +1,58 @@
 # C++ Fundamentals
 
-A collection of independent C++ programming examples and reusable implementations, ranging from arithmetic and control flow to algorithms, memory management, and object-oriented design.
+A collection of independent C++ programming examples, reusable functions, algorithms, and class implementations. The repository covers procedural programming, the C++ standard library, data processing, memory management, recursion, and object-oriented design.
 
 ## Topics
 
-### Basics
+| Area | Examples |
+| --- | --- |
+| [Basics](basics/) | Unit conversion, time arithmetic, numerical calculations, eligibility and grade calculations |
+| [Conditionals](conditionals/) | Branching, numerical comparisons, calendar calculations, triangle classification and decision logic |
+| [Strings and functions](strings-and-functions/) | Numeric parsing, Roman numerals, postal barcodes, templates, string conversion, comment stripping and introductory ciphers |
+| [String algorithms](string-algorithms/) | Pattern counting, substring manipulation, repetition, matching and character filtering |
+| [Reference parameters](reference-parameters/) | Number-base conversion, GCD, digit ranges, factor counting, unit calculations and multiple outputs |
+| [Recursion](recursion/) | Factorial, integer powers, digit counting, recursive string transformations and nested-parenthesis processing |
+| [Input and data processing](input-and-data-processing/) | Stream input, validation, weighted statistics, token statistics, file reading and spell checking |
+| [Stream processing](stream-processing/) | Word and token statistics, running sums, duplicate counts, text transformations and record processing |
+| [Geometry](geometry/) | Points, distance calculations and triangle perimeter |
+| [Structs and vectors](structs-and-vectors/) | Structured records, vector processing, mileage comparisons and distance-based selection |
+| [Arrays and memory](arrays-and-memory/) | Vector merge, pointers, array transformations and dynamic allocation |
+| [Array algorithms](array-algorithms/) | Insertion, removal, filtering and ordered array operations |
+| [C-string algorithms](c-string-algorithms/) | Character searches, substring extraction, bounded copying and concatenation |
+| [Image processing](image-processing/) | Image negatives, green-screen compositing, flipping, mirroring and image classes |
+| [Object-oriented programming](object-oriented-programming/) | Time classes, simulations, inheritance and polymorphism |
+| [Class design](class-design/) | Encapsulation, constructors, bank accounts, dates, complex numbers, geometric shapes, vehicles and currency |
 
-- [Unit conversion](basics/unit-conversion/) — runnable example
-- [Time arithmetic](basics/time-arithmetic/) — runnable example
-- [Letter grade calculator](basics/letter-grade-calculator/) — runnable example
-- [Graduation eligibility](basics/graduation-eligibility/) — runnable example
+## Build and run
 
-### Strings And Functions
-
-- [French articles](strings-and-functions/french-articles/)
-- [Numeric string parsing](strings-and-functions/numeric-string-parsing/)
-- [String patterns](strings-and-functions/string-patterns/)
-- [Postal barcode](strings-and-functions/postal-barcode/)
-- [Roman numerals](strings-and-functions/roman-numerals/)
-- [Recursive strings](strings-and-functions/recursive-strings/)
-- [Stream cipher](strings-and-functions/stream-cipher/)
-- [Comment stripping](strings-and-functions/comment-stripping/) — runnable example
-- [Template string conversion](strings-and-functions/template-string-conversion/)
-- [C string operations](strings-and-functions/c-string-operations/)
-
-### Input And Data Processing
-
-- [Overloaded input](input-and-data-processing/overloaded-input/)
-- [Weighted data statistics](input-and-data-processing/weighted-data-statistics/)
-- [Validated input](input-and-data-processing/validated-input/) — runnable example
-- [Token statistics](input-and-data-processing/token-statistics/)
-- [Word file reader](input-and-data-processing/word-file-reader/)
-- [Spell checker](input-and-data-processing/spell-checker/)
-
-### Geometry
-
-- [Point geometry](geometry/point-geometry/)
-- [Triangle perimeter](geometry/triangle-perimeter/)
-
-### Arrays And Memory
-
-- [Vector merge](arrays-and-memory/vector-merge/)
-- [Array pointer algorithms](arrays-and-memory/array-pointer-algorithms/)
-- [Array transformation](arrays-and-memory/array-transformation/)
-- [Dynamic array](arrays-and-memory/dynamic-array/) — runnable example
-
-### Image Processing
-
-- [Image negative](image-processing/image-negative/)
-- [Green screen compositing](image-processing/green-screen-compositing/)
-- [Image flip mirror](image-processing/image-flip-mirror/)
-- [Image class](image-processing/image-class/)
-
-### Object Oriented Programming
-
-- [Time class](object-oriented-programming/time-class/) — runnable example
-- [Bug simulation](object-oriented-programming/bug-simulation/) — runnable example
-- [Shape inheritance](object-oriented-programming/shape-inheritance/)
-- [Worker polymorphism](object-oriented-programming/worker-polymorphism/)
-
-## Build
-
-Use a C++17 compiler and CMake:
+The root CMake configuration builds the original standalone console examples and reusable modules using a C++17 compiler:
 
 ```sh
 cmake -S . -B build
 cmake --build build
 ```
 
-The console examples have standard `main()` entry points and build as separate executables. For example, `./build/unit_conversion` runs the unit conversion example on a Unix-like system (multi-configuration generators may place executables in `Debug` or `Release`). Other modules build independently as object files and can be used from a separate driver program. They are not intended to be linked into one executable.
+For example, run `./build/unit_conversion` on a Unix-like system. Multi-configuration generators may place executables in a `Debug` or `Release` directory.
 
-## Examples and sample inputs
+The remaining topic directories contain independent functions and classes, including alternative implementations. They are not all registered as CMake targets and are not intended to be linked into one executable. Compile individual implementation files independently, for example:
 
-Additional usage examples are retained in the relevant source files as `run_example()` functions. Numeric sample datasets and word filters are included. A small demonstration word list replaces the original large dictionary of uncertain redistribution terms. The string conversion demonstration builds as `string_conversion_example`. Supply your own compatible image files for the image examples; bundled third-party images and binary grading libraries are not included.
+```sh
+g++ -std=c++17 -Wall -Wextra -c recursion/factorial/factorial.cpp -o factorial.o
+```
+
+To execute a function-only implementation, supply a compatible driver program containing `main()`. Related headers and source files should be compiled together as appropriate. Alternative versions may define the same symbols, so build them separately.
+
+## Examples and supporting data
+
+Useful demonstrations are retained alongside the implementations, including `run_example()` functions where applicable. Numeric datasets, word filters and a small demonstration dictionary are included. The string conversion demonstration builds as `string_conversion_example`. Supply compatible image files for the image-processing examples.
 
 ## Implementation notes
 
-The original function and class logic is preserved. Some modules have external dependencies: triangle perimeter and shape inheritance require compatible point implementations, and the image class requires compatible stb_image and stb_image_write implementations for file I/O. The template string conversion example illustrates conditional compilation and is active for older C++ language modes. The stream cipher is a demonstration, not a secure encryption system.
+- The collection preserves original programming logic and alternative implementations.
+- The Circle class in `class-design/circle/` references a missing `point.h`. Provide a compatible header before compiling that module.
+- Triangle perimeter and shape inheritance require compatible point implementations; image file I/O requires compatible stb_image and stb_image_write implementations.
+- The template string conversion example demonstrates conditional compilation for older C++ language modes.
+- The stream cipher demonstrates a programming concept and is not suitable for secure encryption.
+- Independent compilation checks do not establish algorithmic correctness, memory safety or comprehensive runtime behavior. Some implementations assume valid inputs and sufficient capacity.
 
-Compilation does not establish algorithmic correctness. These examples have not undergone comprehensive runtime or edge-case testing. Existing attribution in retained interface headers is preserved; verify redistribution permissions before publishing third-party material.
+Existing attribution is retained where applicable. Verify redistribution permissions for third-party examples and assets.
